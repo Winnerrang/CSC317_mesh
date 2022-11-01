@@ -55,12 +55,13 @@ bool write_obj(
   assert(F.rows() == UF.rows() && F.rows() == NF.rows() && "Number of faces are not equal in three matrices\n");
   assert(F.cols() == UF.cols() && F.cols() == NF.cols() && "Number of cols are not equal in three matrices\n");
 
-  for (int row = 0; row < NV.rows(); row++) {
+  for (int row = 0; row < F.rows(); row++) {
 	  ofs << "f";
-	  for (int col = 0; col < NV.cols(); col++) {
+	  for (int col = 0; col < F.cols(); col++) {
 
 		  //matrix index starts from 0, but .obj file's index start from 1
-		  ofs << " " << NF(row, col) + 1 << "/" << UF(row, col) + 1 << "/" << NF(row, col) + 1;
+		  ofs << " " << F(row, col) + 1 << "/" << UF(row, col) + 1 << "/" << NF(row, col) + 1;
+
 	  }
 
 	  ofs << std::endl;

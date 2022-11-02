@@ -8,6 +8,12 @@ void per_face_normals(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code:
-  N = Eigen::MatrixXd::Zero(F.rows(),3);
+
+	N.resize(F.rows(), 3);
+	for (int f = 0; f < F.rows(); f++) {
+		auto normal = triangle_area_normal(V.row(F(f, 0)), V.row(F(f, 1)), V.row(F(f, 2)));
+		N.row(f) = normal.normalized();
+	}
+
   ////////////////////////////////////////////////////////////////////////////
 }

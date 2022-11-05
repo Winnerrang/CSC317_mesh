@@ -1,6 +1,6 @@
 #include "triangle_area_normal.h"
 #include <Eigen/Geometry>
-
+#include <iostream>
 Eigen::RowVector3d triangle_area_normal(
   const Eigen::RowVector3d & a, 
   const Eigen::RowVector3d & b, 
@@ -10,6 +10,6 @@ Eigen::RowVector3d triangle_area_normal(
   // Replace with your code:
   ////////////////////////////////////////////////////////////////////////////
 
-	auto normal = (b - a).cross(c - a) / 2;
-	return normal;
+
+	return 0.5 * (b - a).cross(c - a);
 }
